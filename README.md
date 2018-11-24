@@ -2,6 +2,7 @@
 
 A simple plugin for easily searching and viewing Linux source code via Elixir's Bootlin from directly within vim.
 
+
 ### Install
 
 vim-plug (recommended):
@@ -14,6 +15,7 @@ vundle:
 
 manual:
 * git clone this repository into your `.vim/` plugins directory
+a
 
 ### Usage
 
@@ -21,6 +23,9 @@ manual:
 2. Input an identifier to search for and press enter. This will open a new split at the bottom listing all the places the identifier was found.
 3. Move your cursor over the one you're interested in and press enter. This will open a new split above with the source code for that file at the correct line number. By default it is opened in a scratch buffer, so if you want to save it you'll need to do so manually. 
 4. Navigate back to the identifier listing at any time and hit enter to open any of the other source files
+
+![example](./bootlin.gif)
+
 
 ### TODOs
 
