@@ -6,6 +6,7 @@ url_base = "https://elixir.bootlin.com/linux"
 # Can use either urllib2 or urllib3 
 try:
     import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     def get_url(url):
         http = urllib3.PoolManager()
         resp = http.request('GET', url)
