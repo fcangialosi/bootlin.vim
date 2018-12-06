@@ -28,8 +28,17 @@ def get_linux_version():
     version = "v" + ".".join(uname.split(".")[0:2])
     return version 
 
-def search(query):
-    version = get_linux_version()
+def get_version():
+    import vim
+    version = vim.eval("g:bootlin_version")
+    if version == "none":
+        return get_linux_version()
+    else:
+        version = version.split("-")[0]
+        if version[0] != "v":
+            return "v"+version
+
+def search(query, version):
     results = get_url("{base}/{version}/ident/{query}".format(
         base=url_base,
         version=version,
@@ -55,7 +64,8 @@ def search(query):
 
 def vim_search():
     import vim
-    search(vim.eval("a:query"))
+    version = get_version()
+    search(vim.eval("a:query"), version)
 
 # filepath is a string url pointing to a specific file in elixir bootlin
 # this filepath is returned as the result of running this script with the search command
@@ -80,7 +90,7 @@ def vim_get_source():
     sp = line.split(" ")
     filepath = sp[0].replace(",", "")
     lineno = sp[2]
-    version = get_linux_version()
+    version = get_version()
     filepath = "{version}/source/{filepath}".format(
         version=version,
         filepath=filepath
@@ -92,6 +102,7 @@ def vim_get_source():
 
 if __name__ == "__main__":
     mode = sys.argv[1]
+    version = get_linux_version()
     if mode == "search":
         search(sys.argv[2])
     elif mode == "get":

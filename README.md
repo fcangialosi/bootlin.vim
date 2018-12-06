@@ -15,7 +15,18 @@ vundle:
 
 manual:
 * git clone this repository into your `.vim/` plugins directory
-a
+
+### Configuration
+
+If you're not on a Linux machine, or if you'd like it to grab the source for a version other than 
+your system default (which it finds by running `uname -a`) you can specify the version in your 
+`.vimrc` as follows:
+
+```
+let g:bootlin_version = "4.19.1"
+```
+
+*NOTE*: This is optional on Linux machines, but *must* be set on non-Linux machines.
 
 ### Usage
 

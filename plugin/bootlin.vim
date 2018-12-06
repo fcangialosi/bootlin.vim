@@ -1,5 +1,7 @@
 let s:plugin_root_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
+let g:bootlin_version = get(g:, 'bootlin_version', 'none')
+
 python3 << EOF
 import sys
 from os.path import normpath, join
